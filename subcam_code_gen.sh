@@ -34,23 +34,6 @@ done
 # 更改内容-大写部分
 sed -i "s/$replaced/$replacing/g" `grep "$replaced" -rl $path`
 
-count=1
-
-for i in `find $path -iname "*$replacing*"`	# 录入已被更名的文件
-do
-	array[count]=$i
-	let count++ 
-done
-
-for i in `grep $replacing -i -rl $path`		# 录入内容被修改的文件
-do
-	array[count]=$i
-	let count++
-done
-
-array=`echo ${array[@]} | sort -u`  	#这个不行，输出空白了
-
-
 echo "修改完成"
 
 
