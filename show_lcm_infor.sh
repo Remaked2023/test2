@@ -3,7 +3,7 @@ device=$1       # 保存要查找配置的器件型号
 
 while [ -z "$device" ]			# 检测是否带参，防止误操作
 do
-	read -p "warning: 无带参执行 请输入要查找的器件:" device
+	read -p "warning: 无带参执行 请输入要查找的器件:" device	# 空输入时重复提醒
 done
 
 
