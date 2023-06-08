@@ -1,12 +1,11 @@
 #!/bin/bash
+device=$1       # 保存要查找配置的器件型号
 
-if [ -z "$1" ]			# 检测是否带参，防止误操作
-then
-	sleep 1s
-	device=`read -p "warning: 无带参执行 请输入要查找的器件"`
-else
-	device=$1	# 保存要查找配置的器件型号
-fi
+while [ -z "$device" ]			# 检测是否带参，防止误操作
+do
+	read -p "warning: 无带参执行 请输入要查找的器件:" device
+done
+
 
 devPath=/home/disk3/linhongyi/shell_test_project_code/device/agenew	# 工程配置查找路径
 verPath=/home/disk3/linhongyi/shell_test_project_code			# 版本文件夹查找路径
@@ -29,3 +28,5 @@ do
 		done
 	done
 done
+
+
