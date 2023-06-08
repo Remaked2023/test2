@@ -6,8 +6,6 @@ do
 	read -p "warning: 无带参执行 请输入要查找的器件:" device
 done
 
-
-
 for devPath in `find . -name "*$device*" -type d` 	# 获得对应的器件全称，并搜寻版本号和对应的配置信息
 do
 	deviceName=$(basename $devPath)	# 切割绝对路径获取器件名称
@@ -40,4 +38,7 @@ do
 	done
 done
 
-
+if [ -z "$devPath" ]
+then
+	echo "没有找到对应器件，请检查输入后重试"
+fi
