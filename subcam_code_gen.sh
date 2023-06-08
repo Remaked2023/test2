@@ -36,7 +36,3 @@ done
 sed -i "s/$replaced/$replacing/g" `grep "$replaced" -rl .`
 
 echo "修改完成"
-
-
-
-
