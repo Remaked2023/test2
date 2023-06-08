@@ -9,21 +9,21 @@
 
 replaced=$1             # 要修改的文本
 
-while [ -z "$replaced" ]			# 没有参数输入，退出程序
+while [ -z "$replaced" ]            # 没有参数输入，退出程序
 do
-	read -p "修改目标为空，请输入要修改的文本:" replaced
+    read -p "修改目标为空，请输入要修改的文本:" replaced
 done
 echo "输入为：$replaced,1s后执行"
 sleep 1s
 echo "开始修改"
 
-replacing=$replaced"s"		# 在要改的文本后加s
+replacing=$replaced"s"        # 在要改的文本后加s
 
 # 小写部分
-for filePath in `find . -name "*$replaced*" | tac`		
+for filePath in `find . -name "*$replaced*" | tac`        
 do
-	newPath=`echo $filePath | sed "s@\(.*\)$replaced@\1$replacing@g"`
-	sudo mv "$filePath" "$newPath"
+    newPath=`echo $filePath | sed "s@\(.*\)$replaced@\1$replacing@g"`
+    sudo mv "$filePath" "$newPath"
 done
 
 # 更改内容-小写部分
@@ -36,7 +36,7 @@ replacing=`echo $replacing | tr a-z A-Z`
 for filePath in `find . -name "*$replaced*"`
 do
         newPath=`echo $filePath | sed "s@\(.*\)$replaced@\1$replacing@g"`
-       	sudo mv "$filePath" "$newPath"
+           sudo mv "$filePath" "$newPath"
 done
 
 # 更改内容-大写部分
@@ -104,10 +104,10 @@ do
 
 	for LCM_Config in `find "$version" -name "*$deviceName*defconfig" ! -name "*debug*" -type f`
 	do
-        LCM_NAME=`grep "CONFIG_CUSTOM_KERNEL_LCM" $LCM_Config | cut -d '"' -f2`	# 获取所有LCM_NAME
+        	LCM_NAME=`grep "CONFIG_CUSTOM_KERNEL_LCM" $LCM_Config | cut -d '"' -f2`	# 获取所有LCM_NAME
 		for LCM in ${LCM_NAME}
 		do
-        	echo "LCM_NAME is: $(echo $LCM)"		# LCM_NAME
+        		echo "LCM_NAME is: $(echo $LCM)"		# LCM_NAME
 			echo "IC is: $(echo $LCM | cut -d '_' -f1)"		# IC型号
 			echo "Module : $(echo $LCM | cut -d '_' -f2)"		# Module模组厂商
 			echo "lane is: $(echo $LCM | cut -d '_' -f3)"		# lane传输通道
@@ -115,6 +115,11 @@ do
 		done
 	done
 done
+
+if [ -z "$devPath" ]
+then
+	echo "没有找到对应器件，请检查输入后重试"
+fi
 
 ```
 
