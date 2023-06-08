@@ -37,5 +37,3 @@ sed -i "s/$replaced/$replacing/g" `grep "$replaced" -rl $path`
 echo "修改完成"
 
 
-
-
